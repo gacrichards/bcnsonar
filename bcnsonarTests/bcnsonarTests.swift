@@ -3,7 +3,7 @@
 //  bcnsonarTests
 //
 //  Created by Cole Richards on 5/5/16.
-//  Copyright © 2016 ROXIMITY. All rights reserved.
+//  Copyright © 2016 Cole Richards. All rights reserved.
 //
 
 import XCTest

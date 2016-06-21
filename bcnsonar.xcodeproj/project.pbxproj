@@ -13,6 +13,28 @@
 		73CB5E031CDBA43B002155A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73CB5E021CDBA43B002155A0 /* Assets.xcassets */; };
 		73CB5E061CDBA43B002155A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 73CB5E041CDBA43B002155A0 /* LaunchScreen.storyboard */; };
 		73CB5E111CDBA43C002155A0 /* bcnsonarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CB5E101CDBA43C002155A0 /* bcnsonarTests.swift */; };
+		73CB5E1E1CDBE9BB002155A0 /* BLEScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CB5E1D1CDBE9BB002155A0 /* BLEScanner.swift */; };
+		73CB5E1F1CDBE9BB002155A0 /* BLEScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CB5E1D1CDBE9BB002155A0 /* BLEScanner.swift */; };
+		73CB5E211CDBEB79002155A0 /* SignalRssiResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CB5E201CDBEB79002155A0 /* SignalRssiResponder.swift */; };
+		73CB5E221CDBEB79002155A0 /* SignalRssiResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CB5E201CDBEB79002155A0 /* SignalRssiResponder.swift */; };
+		73E714CC1CE6092500DE7F1C /* 500Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 73E714C21CE6092500DE7F1C /* 500Hz.wav */; };
+		73E714CD1CE6092500DE7F1C /* 550Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 73E714C31CE6092500DE7F1C /* 550Hz.wav */; };
+		73E714CE1CE6092500DE7F1C /* 650Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 73E714C41CE6092500DE7F1C /* 650Hz.wav */; };
+		73E714CF1CE6092500DE7F1C /* 700Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 73E714C51CE6092500DE7F1C /* 700Hz.wav */; };
+		73E714D01CE6092500DE7F1C /* 750Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 73E714C61CE6092500DE7F1C /* 750Hz.wav */; };
+		73E714D11CE6092500DE7F1C /* 800Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 73E714C71CE6092500DE7F1C /* 800Hz.wav */; };
+		73E714D21CE6092500DE7F1C /* 850Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 73E714C81CE6092500DE7F1C /* 850Hz.wav */; };
+		73E714D31CE6092500DE7F1C /* 900Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 73E714C91CE6092500DE7F1C /* 900Hz.wav */; };
+		73E714D41CE6092500DE7F1C /* 950Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 73E714CA1CE6092500DE7F1C /* 950Hz.wav */; };
+		73E714D51CE6092500DE7F1C /* 1000Hz.wav in Resources */ = {isa = PBXBuildFile; fileRef = 73E714CB1CE6092500DE7F1C /* 1000Hz.wav */; };
+		73E714D81CE609DA00DE7F1C /* BLETonePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E714D71CE609DA00DE7F1C /* BLETonePlayer.swift */; };
+		73E714DA1CE60EC700DE7F1C /* SignalSelectorDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E714D91CE60EC700DE7F1C /* SignalSelectorDisplay.swift */; };
+		73E714DC1CE61F2200DE7F1C /* BLESignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E714DB1CE61F2200DE7F1C /* BLESignal.swift */; };
+		73E714DD1CE61F2200DE7F1C /* BLESignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E714DB1CE61F2200DE7F1C /* BLESignal.swift */; };
+		73E714E01CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E714DE1CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.swift */; };
+		73E714E11CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73E714DE1CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.swift */; };
+		73E714E21CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73E714DF1CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.xib */; };
+		73E714E31CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 73E714DF1CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +58,23 @@
 		73CB5E0C1CDBA43C002155A0 /* bcnsonarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = bcnsonarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CB5E101CDBA43C002155A0 /* bcnsonarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bcnsonarTests.swift; sourceTree = "<group>"; };
 		73CB5E121CDBA43C002155A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		73CB5E1D1CDBE9BB002155A0 /* BLEScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEScanner.swift; sourceTree = "<group>"; };
+		73CB5E201CDBEB79002155A0 /* SignalRssiResponder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalRssiResponder.swift; sourceTree = "<group>"; };
+		73E714C21CE6092500DE7F1C /* 500Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 500Hz.wav; sourceTree = "<group>"; };
+		73E714C31CE6092500DE7F1C /* 550Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 550Hz.wav; sourceTree = "<group>"; };
+		73E714C41CE6092500DE7F1C /* 650Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 650Hz.wav; sourceTree = "<group>"; };
+		73E714C51CE6092500DE7F1C /* 700Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 700Hz.wav; sourceTree = "<group>"; };
+		73E714C61CE6092500DE7F1C /* 750Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 750Hz.wav; sourceTree = "<group>"; };
+		73E714C71CE6092500DE7F1C /* 800Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 800Hz.wav; sourceTree = "<group>"; };
+		73E714C81CE6092500DE7F1C /* 850Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 850Hz.wav; sourceTree = "<group>"; };
+		73E714C91CE6092500DE7F1C /* 900Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 900Hz.wav; sourceTree = "<group>"; };
+		73E714CA1CE6092500DE7F1C /* 950Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 950Hz.wav; sourceTree = "<group>"; };
+		73E714CB1CE6092500DE7F1C /* 1000Hz.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 1000Hz.wav; sourceTree = "<group>"; };
+		73E714D71CE609DA00DE7F1C /* BLETonePlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLETonePlayer.swift; sourceTree = "<group>"; };
+		73E714D91CE60EC700DE7F1C /* SignalSelectorDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalSelectorDisplay.swift; sourceTree = "<group>"; };
+		73E714DB1CE61F2200DE7F1C /* BLESignal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLESignal.swift; sourceTree = "<group>"; };
+		73E714DE1CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLESignalTableCellTableViewCell.swift; sourceTree = "<group>"; };
+		73E714DF1CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BLESignalTableCellTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +120,16 @@
 				73CB5DFD1CDBA43B002155A0 /* ViewController.swift */,
 				73CB5DFF1CDBA43B002155A0 /* Main.storyboard */,
 				73CB5E021CDBA43B002155A0 /* Assets.xcassets */,
+				73E714D61CE6093300DE7F1C /* Tone Wav */,
 				73CB5E041CDBA43B002155A0 /* LaunchScreen.storyboard */,
 				73CB5E071CDBA43B002155A0 /* Info.plist */,
+				73CB5E1D1CDBE9BB002155A0 /* BLEScanner.swift */,
+				73CB5E201CDBEB79002155A0 /* SignalRssiResponder.swift */,
+				73E714D71CE609DA00DE7F1C /* BLETonePlayer.swift */,
+				73E714D91CE60EC700DE7F1C /* SignalSelectorDisplay.swift */,
+				73E714DB1CE61F2200DE7F1C /* BLESignal.swift */,
+				73E714DE1CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.swift */,
+				73E714DF1CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.xib */,
 			);
 			path = bcnsonar;
 			sourceTree = "<group>";
@@ -94,6 +141,23 @@
 				73CB5E121CDBA43C002155A0 /* Info.plist */,
 			);
 			path = bcnsonarTests;
+			sourceTree = "<group>";
+		};
+		73E714D61CE6093300DE7F1C /* Tone Wav */ = {
+			isa = PBXGroup;
+			children = (
+				73E714C21CE6092500DE7F1C /* 500Hz.wav */,
+				73E714C31CE6092500DE7F1C /* 550Hz.wav */,
+				73E714C41CE6092500DE7F1C /* 650Hz.wav */,
+				73E714C51CE6092500DE7F1C /* 700Hz.wav */,
+				73E714C61CE6092500DE7F1C /* 750Hz.wav */,
+				73E714C71CE6092500DE7F1C /* 800Hz.wav */,
+				73E714C81CE6092500DE7F1C /* 850Hz.wav */,
+				73E714C91CE6092500DE7F1C /* 900Hz.wav */,
+				73E714CA1CE6092500DE7F1C /* 950Hz.wav */,
+				73E714CB1CE6092500DE7F1C /* 1000Hz.wav */,
+			);
+			name = "Tone Wav";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,9 +241,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73E714D21CE6092500DE7F1C /* 850Hz.wav in Resources */,
 				73CB5E061CDBA43B002155A0 /* LaunchScreen.storyboard in Resources */,
+				73E714CE1CE6092500DE7F1C /* 650Hz.wav in Resources */,
 				73CB5E031CDBA43B002155A0 /* Assets.xcassets in Resources */,
+				73E714D41CE6092500DE7F1C /* 950Hz.wav in Resources */,
+				73E714D51CE6092500DE7F1C /* 1000Hz.wav in Resources */,
+				73E714D11CE6092500DE7F1C /* 800Hz.wav in Resources */,
+				73E714CF1CE6092500DE7F1C /* 700Hz.wav in Resources */,
+				73E714CC1CE6092500DE7F1C /* 500Hz.wav in Resources */,
 				73CB5E011CDBA43B002155A0 /* Main.storyboard in Resources */,
+				73E714E21CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.xib in Resources */,
+				73E714CD1CE6092500DE7F1C /* 550Hz.wav in Resources */,
+				73E714D31CE6092500DE7F1C /* 900Hz.wav in Resources */,
+				73E714D01CE6092500DE7F1C /* 750Hz.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -187,6 +262,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73E714E31CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,8 +273,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73CB5E1E1CDBE9BB002155A0 /* BLEScanner.swift in Sources */,
+				73CB5E211CDBEB79002155A0 /* SignalRssiResponder.swift in Sources */,
+				73E714DC1CE61F2200DE7F1C /* BLESignal.swift in Sources */,
 				73CB5DFE1CDBA43B002155A0 /* ViewController.swift in Sources */,
+				73E714E01CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.swift in Sources */,
 				73CB5DFC1CDBA43B002155A0 /* AppDelegate.swift in Sources */,
+				73E714D81CE609DA00DE7F1C /* BLETonePlayer.swift in Sources */,
+				73E714DA1CE60EC700DE7F1C /* SignalSelectorDisplay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +288,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73CB5E1F1CDBE9BB002155A0 /* BLEScanner.swift in Sources */,
+				73CB5E221CDBEB79002155A0 /* SignalRssiResponder.swift in Sources */,
 				73CB5E111CDBA43C002155A0 /* bcnsonarTests.swift in Sources */,
+				73E714DD1CE61F2200DE7F1C /* BLESignal.swift in Sources */,
+				73E714E11CE63A8F00DE7F1C /* BLESignalTableCellTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,7 +415,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bcnsonar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.roximity.bcnsonar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chaco.bcnsonar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -340,7 +426,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = bcnsonar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.roximity.bcnsonar;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chaco.bcnsonar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -351,7 +437,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = bcnsonarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.roximity.bcnsonarTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chaco.bcnsonarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bcnsonar.app/bcnsonar";
 			};
@@ -363,7 +449,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = bcnsonarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.roximity.bcnsonarTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chaco.bcnsonarTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/bcnsonar.app/bcnsonar";
 			};
@@ -388,6 +474,7 @@
 				73CB5E171CDBA43C002155A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		73CB5E181CDBA43C002155A0 /* Build configuration list for PBXNativeTarget "bcnsonarTests" */ = {
 			isa = XCConfigurationList;
@@ -396,6 +483,7 @@
 				73CB5E1A1CDBA43C002155A0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
