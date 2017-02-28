@@ -16,8 +16,8 @@ class BLEScanner: NSObject, CBCentralManagerDelegate {
     
     var bandIds = [CBUUID]()
     
-    var rssiBySignalId = [NSUUID:NSNumber]()
-    var lastUpdateSent = NSDate.distantPast()
+    var rssiBySignalId = [UUID:NSNumber]()
+    var lastUpdateSent = Date.distantPast
     static let updateTimeInterval: Double = 1
     
     init(delegate: SignalRssiResonderDelegate){
@@ -27,40 +27,40 @@ class BLEScanner: NSObject, CBCentralManagerDelegate {
     }
     
     func setupCentralManager(){
-        let centralQueue = dispatch_queue_create("com.chaco.BLEScanner", nil);
+        let centralQueue = DispatchQueue(label: "com.chaco.BLEScanner", attributes: []);
         self.centralManager = CBCentralManager.init(delegate:self, queue:centralQueue)
     }
     
     
-    func centralManagerDidUpdateState(central: CBCentralManager){
-        if (central.state == CBCentralManagerState.PoweredOn){
+    func centralManagerDidUpdateState(_ central: CBCentralManager){
+        if (central.state == .poweredOn){
             print("bluetooth on and in useable state")
             startScanningWithService(nil);
         }
     }
     
-    func startScanningWithService(services:[CBUUID]?){
+    func startScanningWithService(_ services:[CBUUID]?){
         let options = [CBCentralManagerScanOptionAllowDuplicatesKey: true]
         if (services != nil){
-            self.centralManager.scanForPeripheralsWithServices(services, options:options)
+            self.centralManager.scanForPeripherals(withServices: services, options:options)
         }else{
-            self.centralManager.scanForPeripheralsWithServices(nil, options: options)
+            self.centralManager.scanForPeripherals(withServices: nil, options: options)
         }
         
     }
     
-    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
         rssiBySignalId[peripheral.identifier] = RSSI
         sendRSSIBySignalUpdate()
         
-        let peripheralID = peripheral.identifier.UUIDString
-        if(bandIds.map({$0.UUIDString}).contains(peripheralID)){
+        let peripheralID = peripheral.identifier.uuidString
+        if(bandIds.map({$0.uuidString}).contains(peripheralID)){
             rssiDelegate.didRecieveSignalUpdateWithIdentifer(peripheralID, andRSSI: Int(RSSI))
         }
     }
     
-    func resetBandMembers(identifiers:[String]){
+    func resetBandMembers(_ identifiers:[String]){
         self.bandIds = [CBUUID]()
         for identifier in identifiers{
             let member = CBUUID.init(string:identifier)
@@ -72,7 +72,7 @@ class BLEScanner: NSObject, CBCentralManagerDelegate {
         if(self.lastUpdateSent.timeIntervalSinceNow < -BLEScanner.updateTimeInterval){
             rssiDelegate.updateRangedSignals(rssiBySignalId)
             rssiBySignalId.removeAll()
-            self.lastUpdateSent = NSDate.init()
+            self.lastUpdateSent = Date.init()
         }
     }
     

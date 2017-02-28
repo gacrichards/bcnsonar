@@ -9,5 +9,5 @@
 import Foundation
 
 protocol SignalSelectorDisplay {
-    func didReceivedNewSignalsToDisplay(signals:[BLESignal])
+    func didReceivedNewSignalsToDisplay(_ signals:[BLESignal])
 }

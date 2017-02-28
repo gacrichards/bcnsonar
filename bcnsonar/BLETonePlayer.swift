@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 
-infix operator ^^ { }
+infix operator ^^
 func ^^ (radix: Float, power: Float) -> Float {
     return Float(pow(Double(radix), Double(power)))
 }
@@ -19,12 +19,12 @@ class BLETonePlayer: NSObject, SignalRssiResonderDelegate {
     
     private let maxVolume: Float = 1.0
     private let minVolume: Float = 0.01
-    private let rssiMaxValue = -40.0 //maps to maxVol
+    private let rssiMaxValue = -30.0 //maps to maxVol
     private let rssiMinValue = -90.0 //maps to minVol
-    var playerTimers = [String: NSTimer]()
+    var playerTimers = [String: Timer]()
     private var hostView: SignalSelectorDisplay
     private var scanner: BLEScanner!
-    private var toneURLs = [NSURL]()
+    private var toneURLs = [URL]()
     
     
     var audioPlayersById: [String: AVAudioPlayer] = [String: AVAudioPlayer]();
@@ -44,17 +44,17 @@ class BLETonePlayer: NSObject, SignalRssiResonderDelegate {
         let toneNames = ["500Hz","550Hz","600Hz","650Hz","700Hz","750Hz","800Hz","850Hz","900Hz","950Hz","1000Hz"]
         for name in toneNames{
             if let soundFilePath = loadWavWithString(name){
-                let fileURL = NSURL.init(fileURLWithPath:(soundFilePath))
+                let fileURL = URL.init(fileURLWithPath:(soundFilePath))
                 toneURLs.append(fileURL)
             }
         }
     }
     
-    func loadWavWithString(name:String) ->String?{
-        return NSBundle.mainBundle().pathForResource(name, ofType: "wav")
+    func loadWavWithString(_ name:String) ->String?{
+        return Bundle.main.path(forResource: name, ofType: "wav")
     }
     
-    func getToneAtIndex(index:Int) -> NSURL?{
+    func getToneAtIndex(_ index:Int) -> URL?{
         if (index < toneURLs.count){
             return toneURLs[index];
         }
@@ -62,47 +62,47 @@ class BLETonePlayer: NSObject, SignalRssiResonderDelegate {
         return nil;
     }
     
-    func createAudioPlayerWithIdentifier(identifier: String, andAudioFileURL fileURL:NSURL){
+    func createAudioPlayerWithIdentifier(_ identifier: String, andAudioFileURL fileURL:URL){
         do{
-            let newPlayer = try AVAudioPlayer.init(contentsOfURL: fileURL)
+            let newPlayer = try AVAudioPlayer.init(contentsOf: fileURL)
             addAudioPlayer(newPlayer, withIdentifier: identifier)
         }catch{
             print("cannot create audioPlayer")
         }
     }
     
-    func removeToneForIdentifier(identifier: String){
-        audioPlayersById.removeValueForKey(identifier);
+    func removeToneForIdentifier(_ identifier: String){
+        audioPlayersById.removeValue(forKey: identifier);
         scanner.resetBandMembers([String](audioPlayersById.keys))
     }
     
     
-    func addAudioPlayer(player:AVAudioPlayer, withIdentifier identifier:String){
+    func addAudioPlayer(_ player:AVAudioPlayer, withIdentifier identifier:String){
         audioPlayersById[identifier] = player;
         scanner.resetBandMembers([String](audioPlayersById.keys))
     }
     
-    func updateRangedSignals(signalsByRssi:[NSUUID:NSNumber]){
+    func updateRangedSignals(_ signalsByRssi:[UUID:NSNumber]){
         
         var signals = [BLESignal]()
         
         for key in signalsByRssi.keys{
-            signals.append(BLESignal.init(identifier: key.UUIDString, signalStrength: signalsByRssi[key]!))
+            signals.append(BLESignal.init(identifier: key.uuidString, signalStrength: signalsByRssi[key]!))
         }
-        signals.sortInPlace {$0.identifer.compare($1.identifer) == .OrderedAscending}
+        signals.sort {$0.identifer.compare($1.identifer) == .orderedAscending}
         
-        dispatch_async(dispatch_get_main_queue(),{
+        DispatchQueue.main.async(execute: {
             self.hostView.didReceivedNewSignalsToDisplay(signals);
         });
     }
     
-    func didRecieveSignalUpdateWithIdentifer(identifier: String, andRSSI rssi:Int){
+    func didRecieveSignalUpdateWithIdentifer(_ identifier: String, andRSSI rssi:Int){
         
         if let playerTimer = playerTimers[identifier]{
             playerTimer.invalidate()
         }
-        let newPlayerTimer = NSTimer.init(timeInterval: 1.0, target: self, selector: #selector(cancelPlayer), userInfo: identifier, repeats:false)
-        NSRunLoop.mainRunLoop().addTimer(newPlayerTimer, forMode: NSDefaultRunLoopMode)
+        let newPlayerTimer = Timer.init(timeInterval: 1.0, target: self, selector: #selector(cancelPlayer), userInfo: identifier, repeats:false)
+        RunLoop.main.add(newPlayerTimer, forMode: RunLoopMode.defaultRunLoopMode)
         playerTimers[identifier] = newPlayerTimer
         
         if(rssi < 0){
@@ -119,7 +119,7 @@ class BLETonePlayer: NSObject, SignalRssiResonderDelegate {
         
     }
     
-    private func nonLinearMapToVolume(rssi: Int) -> Float{
+    private func nonLinearMapToVolume(_ rssi: Int) -> Float{
         let r = Float(rssi)
         let part1 = -0.0000333333*(r^^3)
         let part2 = 0.00633333*(r^^2)
@@ -129,7 +129,7 @@ class BLETonePlayer: NSObject, SignalRssiResonderDelegate {
         return volume
     }
     
-    private func mapRSSIToVolume(rssi: Int) ->Float{
+    private func mapRSSIToVolume(_ rssi: Int) ->Float{
         /*
          (b-a)(x - min)
          f(x) = --------------  + a
@@ -141,21 +141,21 @@ class BLETonePlayer: NSObject, SignalRssiResonderDelegate {
         return (volumeRange * rssiDeltaMin)/rssiRange + Float(minVolume)
     }
     
-    private func playAudioPlayerWithIdentifier(identifier:String, atVolume vol:Float){
+    private func playAudioPlayerWithIdentifier(_ identifier:String, atVolume vol:Float){
         if let currentPlayer = self.audioPlayersById[identifier]{
             currentPlayer.volume = vol
-            if(!currentPlayer.playing){
+            if(!currentPlayer.isPlaying){
                 currentPlayer.play()
             }
         }
         
     }
     
-    func cancelPlayer(timer: NSTimer){
+    func cancelPlayer(_ timer: Timer){
         print("stopping playback")
         if let identifier = timer.userInfo as? String{
             if let currentPlayer = self.audioPlayersById[identifier]{
-                if(currentPlayer.playing){
+                if(currentPlayer.isPlaying){
                     currentPlayer.stop()
                 }
                 

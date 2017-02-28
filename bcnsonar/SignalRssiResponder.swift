@@ -10,6 +10,6 @@ import Foundation
 
 
 protocol SignalRssiResonderDelegate{
-    func didRecieveSignalUpdateWithIdentifer(identifier: String, andRSSI rssi:Int)
-    func updateRangedSignals(signalsByRssi: [NSUUID:NSNumber])
+    func didRecieveSignalUpdateWithIdentifer(_ identifier: String, andRSSI rssi:Int)
+    func updateRangedSignals(_ signalsByRssi: [UUID:NSNumber])
 }

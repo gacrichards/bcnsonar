@@ -21,8 +21,8 @@ class ViewController: UIViewController, SignalSelectorDisplay, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         tonePlayer = BLETonePlayer.init(hostView: self)
-        self.signalTable.registerClass(BLESignalTableCellTableViewCell.self, forCellReuseIdentifier: "BLESignalCell")
-        self.signalTable.registerNib(UINib(nibName: "BLESignalTableCellTableViewCell", bundle: nil), forCellReuseIdentifier: "BLESignalCell")
+        self.signalTable.register(BLESignalTableCellTableViewCell.self, forCellReuseIdentifier: "BLESignalCell")
+        self.signalTable.register(UINib(nibName: "BLESignalTableCellTableViewCell", bundle: nil), forCellReuseIdentifier: "BLESignalCell")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -32,11 +32,13 @@ class ViewController: UIViewController, SignalSelectorDisplay, UITableViewDelega
     }
     
     
-    func didReceivedNewSignalsToDisplay(signals:[BLESignal]){
+    func didReceivedNewSignalsToDisplay(_ signals:[BLESignal]){
         //split into tone signals and available signals
+        
+        let sorted = signals.filter({$0.signalStrength != 127}).sorted(by: {$0.signalStrength.doubleValue > $1.signalStrength.doubleValue})
         let toneArray = [String](toneTracker.keys)
-        toneSignals = signals.filter({toneArray.contains($0.identifer)})
-        availSignals = signals.filter({!toneArray.contains($0.identifer)})
+        toneSignals = sorted.filter({toneArray.contains($0.identifer)})
+        availSignals = sorted.filter({!toneArray.contains($0.identifer)})
         self.signalTable.reloadData()
         
     }
@@ -44,11 +46,11 @@ class ViewController: UIViewController, SignalSelectorDisplay, UITableViewDelega
     
     
     //TABLE VIEW METHODS
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         switch section {
         case 0:
             return toneSignals.count
@@ -59,7 +61,7 @@ class ViewController: UIViewController, SignalSelectorDisplay, UITableViewDelega
         }
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         var headerText = ""
         var height:CGFloat = 0
@@ -75,7 +77,7 @@ class ViewController: UIViewController, SignalSelectorDisplay, UITableViewDelega
             break;
         }
         
-        let headerFrame = CGRectMake(0, 0, tableView.frame.size.width, height)
+        let headerFrame = CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: height)
         let headerView = UIView.init(frame: headerFrame)
         let headerLabel = UILabel.init(frame: headerFrame)
         
@@ -84,7 +86,7 @@ class ViewController: UIViewController, SignalSelectorDisplay, UITableViewDelega
         return headerView;
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         var signals = [BLESignal]()
         
         switch indexPath.section {
@@ -97,7 +99,7 @@ class ViewController: UIViewController, SignalSelectorDisplay, UITableViewDelega
         }
         
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("BLESignalCell", forIndexPath: indexPath) as! BLESignalTableCellTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "BLESignalCell", for: indexPath) as! BLESignalTableCellTableViewCell
         let signal = signals[indexPath.row]
         let fullNameArr = signal.identifer.characters.split{$0 == "-"}.map(String.init)
         let firstSet = fullNameArr[0]
@@ -116,7 +118,7 @@ class ViewController: UIViewController, SignalSelectorDisplay, UITableViewDelega
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var signals = [BLESignal]()
         
         switch indexPath.section {
